@@ -1,0 +1,58 @@
+<body>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        <form class="md-form col-md-12 text-center">
+          <div class="file-field">
+            <div class="btn btn-primary btn-sm float-left">
+              <input type="file" (change)="selectFile($event)">
+            </div>
+            <button class="btn btn-primary mr-5" [disabled]="!selectedFiles" (click)="upload()">
+              Upload
+            </button>
+          </div>
+          <div>
+            <div class="submit-form mb-5">
+              <div *ngIf="currentFile" class="progress my-3">
+                <div
+                  class="progress-bar progress-bar-info progress-bar-striped"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }"
+                >
+                  {{ progress }}%
+                </div>
+              </div>
+              <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+            </div>
+          </div>
+        </form>
+
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
+          Phone:<input id="first-name" class="input100" type="text" name="username" placeholder="User name" [(ngModel)]="candidat.phone">
+          <span class="focus-input100"></span>
+        </div>
+    
+
+        <div class="container-login100-form-btn">
+          <button *ngIf="hiddenII" class="login100-form-btn">
+            Save
+          </button>
+        </div>
+      </form>
+      <img class="login100-more" *ngIf="!hidden" src="https://unblast.com/wp-content/uploads/2020/05/Job-Hunting-Illustration.jpg">
+      <pdf-viewer [src]="pdfSrc"
+                  class="login100-more"
+                  [render-text]="true"
+
+                  [original-size]="false"
+
+      ></pdf-viewer>
+    </div>
+  </div>
+</div>
+<div id="dropDownSelect1"></div>
+</body>
