@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+  }
+#top-align{
+  position: relative;
+  top: -230px;
+}
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+  filter: invert(100%);
+}

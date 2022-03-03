@@ -2,18 +2,18 @@
 <div class="limiter">
   <div class="container-login100">
     <div class="wrap-login100">
-      <form class="login100-form validate-form">
+      <form class="login100-form validate-form" id="top-align">
         <form class="md-form col-md-12 text-center">
           <div class="file-field">
-            <div class="btn btn-primary btn-sm float-left">
+            <div style="height: 30px;width: 250px;" class="btn btn-primary btn-sm float-left">
               <input type="file" (change)="selectFile($event)">
             </div>
-            <button class="btn btn-primary mr-5" [disabled]="!selectedFiles" (click)="upload()">
+            <button style="height: 30px;width: 80px;" class="btn btn-primary mr-5" [disabled]="!selectedFiles" (click)="upload()">
               Upload
             </button>
           </div>
           <div>
-            <div class="submit-form mb-5">
+            <div class="submit-form">
               <div *ngIf="currentFile" class="progress my-3">
                 <div
                   class="progress-bar progress-bar-info progress-bar-striped"
@@ -28,26 +28,55 @@
               </div>
               <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
             </div>
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
+              <h4>First name :</h4><input id="first-name" class="input100" type="text" name="username" placeholder="First name" [(ngModel)]="candidat.firstname">
+            </div>
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
+              <h4>Last name :</h4><input id="last-name" class="input100" type="text" name="lastname" placeholder="Last name" [(ngModel)]="candidat.lastname">
+            </div>
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
+              <h4>Phone :</h4><input id="phone" class="input100" type="text" name="phone" placeholder="Phone number" [(ngModel)]="candidat.phone">
+            </div>
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
+              <h4>Email :</h4><input id="email" class="input100" type="email" name="email" placeholder="Email" [(ngModel)]="candidat.email">
+            </div>
+          
+            <div data-interval="1400" id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" *ngIf="hiddenII">
+              <h4>Skills : <span style="font-size:small;color: blue;" (click)="addSkillinput()" class="glyphicon glyphicon-plus btn btn-outline-primary"></span></h4>
+              <li data-target="#carouselExampleCaptions"  *ngFor="let item of candidat.skills;let index = index" [attr.data-slide-to]="index"></li>
+            <div class="carousel-inner">
+              <div class="carousel-item text-center" *ngFor="let item of candidat.skills;let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
+                <h1>{{item}}</h1>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon mr-2" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            </div>
+            <div class="input-group mb-3 mt-4" *ngIf="hiddenII && hiddenIII">
+              <div class="input-group-append">
+                <input style="width: 300px;" type="text" class="form-control" placeholder="Add a skill" aria-label="Recipient's skill" aria-describedby="basic-addon2" name="added" [(ngModel)]="this.added">
+                <span style="font-size: medium;color: blue;" (click)="addSkill()" class="glyphicon glyphicon-ok btn btn-outline-secondary"></span>
+              </div>
+            </div>
+            <div class="container-login100-form-btn mt-5">
+              <button (click)="saveCv()" *ngIf="hiddenII" class="login100-form-btn">
+                Save
+              </button>
+            </div>
           </div>
         </form>
-
-        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 mt-4" data-validate="Type user name" *ngIf="hiddenII">
-          Phone:<input id="first-name" class="input100" type="text" name="username" placeholder="User name" [(ngModel)]="candidat.phone">
-          <span class="focus-input100"></span>
-        </div>
-    
-
-        <div class="container-login100-form-btn">
-          <button *ngIf="hiddenII" class="login100-form-btn">
-            Save
-          </button>
-        </div>
+           
       </form>
       <img class="login100-more" *ngIf="!hidden" src="https://unblast.com/wp-content/uploads/2020/05/Job-Hunting-Illustration.jpg">
       <pdf-viewer [src]="pdfSrc"
                   class="login100-more"
                   [render-text]="true"
-
                   [original-size]="false"
 
       ></pdf-viewer>
@@ -55,4 +84,6 @@
   </div>
 </div>
 <div id="dropDownSelect1"></div>
+<app-footer></app-footer>
 </body>
+

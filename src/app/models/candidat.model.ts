@@ -4,6 +4,6 @@ export class Candidat {
     lastname?:string ;
     phone?:string;
     email?:string;
-    skills?: [];
+    skills?: any [];
     idfile? : string;
 }

@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 import { UploadService } from '../services/upload.service';
 import { Candidat } from '../models/candidat.model';
-
+import * as $ from 'jquery'
 
 
 @Component({
@@ -20,6 +20,7 @@ export class UploadComponent implements OnInit {
   message = '';
   fileInfos?: Observable<any>;
   pdfSrc :any;
+  added?:[];
 
 
   candidat : Candidat = {
@@ -33,6 +34,7 @@ export class UploadComponent implements OnInit {
   }
   hidden:boolean = false;
   hiddenII:boolean = false;
+  hiddenIII:boolean=false;
 
   constructor(private router : Router, private uploadService: UploadService) { }
 
@@ -52,6 +54,7 @@ export class UploadComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.router.navigate([`/application-sent`]);
         },
         error: (e) => console.error(e)
       });
@@ -109,5 +112,14 @@ export class UploadComponent implements OnInit {
 
 
 }
+  ngAfterViewInit(){
+  ($('#carouselExampleCaptions')as any).carousel()
+  }
+  addSkillinput():void{
+    this.hiddenIII=true;
+  }
+  addSkill():void{
+    this.candidat.skills?.push(this.added);
+  }
 
 }

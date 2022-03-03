@@ -7,19 +7,22 @@ import { UploadComponent } from './upload/upload.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FooterComponent } from './footer/footer.component';
+import { SuccessComponent } from './success/success.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadComponent
+    UploadComponent,
+    FooterComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PdfViewerModule,
     HttpClientModule,
-    MDBBootstrapModule,
     ReactiveFormsModule,
     FormsModule
   ],
